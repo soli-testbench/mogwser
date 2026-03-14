@@ -1,0 +1,4 @@
+# Mogwser Side-Panels component
+EXTRA_JS_MODULES.mogwser += [
+    'SidePanels.js',
+]

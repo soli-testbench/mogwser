@@ -1,0 +1,4 @@
+# Mogwser Split-View component
+EXTRA_JS_MODULES.mogwser += [
+    'SplitView.js',
+]

@@ -1,0 +1,20 @@
+# Mogwser top-level moz.build
+# This file integrates Mogwser components into the Firefox build system.
+
+DIRS += [
+    'src/browser/components/sidebar-tabs',
+    'src/browser/components/workspaces',
+    'src/browser/components/split-view',
+    'src/browser/components/side-panels',
+    'src/browser/components/theme-engine',
+    'src/browser/components/privacy',
+    'src/browser/components/compact-mode',
+]
+
+EXTRA_JS_MODULES.mogwser += [
+    'src/browser/chrome/content/mogwser.js',
+]
+
+BROWSER_CHROME_MANIFESTS += [
+    'src/browser/chrome/content/mogwser-overlay.xhtml',
+]

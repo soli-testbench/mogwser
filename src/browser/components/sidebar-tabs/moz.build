@@ -1,0 +1,4 @@
+# Mogwser Sidebar Tabs component
+EXTRA_JS_MODULES.mogwser += [
+    'SidebarTabs.js',
+]

@@ -1,0 +1,4 @@
+# Mogwser Workspaces component
+EXTRA_JS_MODULES.mogwser += [
+    'Workspaces.js',
+]

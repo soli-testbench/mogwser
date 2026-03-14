@@ -1,0 +1,15 @@
+{
+  "name": "mogwser",
+  "version": "1.0.0",
+  "description": "Mogwser Browser - A Firefox fork with vertical tabs, workspaces, split-view, and privacy features",
+  "private": true,
+  "scripts": {
+    "test": "node tests/runner.js",
+    "test:unit": "node tests/runner.js --unit",
+    "test:integration": "node tests/runner.js --integration",
+    "lint": "node scripts/lint.js",
+    "build": "node scripts/build.js",
+    "setup": "node scripts/setup.js"
+  },
+  "license": "MPL-2.0"
+}

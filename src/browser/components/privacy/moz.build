@@ -1,0 +1,4 @@
+# Mogwser Privacy component
+EXTRA_JS_MODULES.mogwser += [
+    'Privacy.js',
+]

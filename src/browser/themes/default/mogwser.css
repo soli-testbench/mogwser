@@ -1,0 +1,462 @@
+/* Mogwser Browser - Default Theme
+   Original implementation - not derived from Zen Browser source. */
+
+:root {
+  --mogwser-bg-primary: #1a1b26;
+  --mogwser-bg-secondary: #24283b;
+  --mogwser-bg-tertiary: #2f3348;
+  --mogwser-text-primary: #c0caf5;
+  --mogwser-text-secondary: #a9b1d6;
+  --mogwser-text-muted: #565f89;
+  --mogwser-accent: #7aa2f7;
+  --mogwser-accent-hover: #89b4fa;
+  --mogwser-border: #3b4261;
+  --mogwser-danger: #f7768e;
+  --mogwser-success: #9ece6a;
+  --mogwser-warning: #e0af68;
+  --mogwser-sidebar-width: 260px;
+  --mogwser-sidebar-collapsed-width: 48px;
+  --mogwser-toolbar-height: 40px;
+  --mogwser-tab-height: 36px;
+  --mogwser-side-panel-width: 360px;
+  --mogwser-radius: 6px;
+  --mogwser-transition: 200ms ease;
+}
+
+/* Reset and base */
+#mogwser-browser-chrome {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  background: var(--mogwser-bg-primary);
+  color: var(--mogwser-text-primary);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== Toolbar ===== */
+.mogwser-toolbar {
+  display: flex;
+  align-items: center;
+  height: var(--mogwser-toolbar-height);
+  padding: 0 8px;
+  background: var(--mogwser-bg-secondary);
+  border-bottom: 1px solid var(--mogwser-border);
+  gap: 8px;
+  -webkit-app-region: drag;
+  flex-shrink: 0;
+}
+
+.mogwser-toolbar.mogwser-compact {
+  height: 32px;
+  padding: 0 4px;
+}
+
+.mogwser-nav-controls {
+  display: flex;
+  gap: 2px;
+  -webkit-app-region: no-drag;
+}
+
+.mogwser-nav-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--mogwser-radius);
+  background: transparent;
+  color: var(--mogwser-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mogwser-nav-btn:hover {
+  background: var(--mogwser-bg-tertiary);
+  color: var(--mogwser-text-primary);
+}
+
+.mogwser-urlbar-container {
+  flex: 1;
+  -webkit-app-region: no-drag;
+}
+
+.mogwser-urlbar {
+  width: 100%;
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--mogwser-border);
+  border-radius: var(--mogwser-radius);
+  background: var(--mogwser-bg-primary);
+  color: var(--mogwser-text-primary);
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.mogwser-urlbar:focus {
+  border-color: var(--mogwser-accent);
+  box-shadow: 0 0 0 2px rgba(122, 162, 247, 0.2);
+}
+
+.mogwser-toolbar-actions {
+  display: flex;
+  gap: 2px;
+  -webkit-app-region: no-drag;
+}
+
+.mogwser-action-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--mogwser-radius);
+  background: transparent;
+  color: var(--mogwser-text-secondary);
+  cursor: pointer;
+}
+
+.mogwser-action-btn:hover {
+  background: var(--mogwser-bg-tertiary);
+  color: var(--mogwser-text-primary);
+}
+
+/* ===== Main Layout ===== */
+.mogwser-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===== Sidebar (Vertical Tabs) ===== */
+.mogwser-sidebar {
+  width: var(--mogwser-sidebar-width);
+  background: var(--mogwser-bg-secondary);
+  border-right: 1px solid var(--mogwser-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width var(--mogwser-transition);
+  overflow: hidden;
+}
+
+.mogwser-sidebar.mogwser-sidebar-collapsed {
+  width: var(--mogwser-sidebar-collapsed-width);
+}
+
+/* Workspace bar */
+.mogwser-workspace-bar {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--mogwser-border);
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.mogwser-workspace-list {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.mogwser-workspace-item {
+  padding: 4px 10px;
+  border-radius: var(--mogwser-radius);
+  background: transparent;
+  color: var(--mogwser-text-secondary);
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.mogwser-workspace-item:hover {
+  background: var(--mogwser-bg-tertiary);
+}
+
+.mogwser-workspace-item.active {
+  background: var(--mogwser-accent);
+  color: var(--mogwser-bg-primary);
+}
+
+.mogwser-workspace-add-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: var(--mogwser-radius);
+  background: transparent;
+  color: var(--mogwser-text-muted);
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mogwser-workspace-add-btn:hover {
+  background: var(--mogwser-bg-tertiary);
+  color: var(--mogwser-text-primary);
+}
+
+/* Tab strip */
+.mogwser-tabstrip {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.mogwser-pinned-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--mogwser-border);
+  margin-bottom: 4px;
+}
+
+.mogwser-pinned-tabs:empty {
+  display: none;
+}
+
+.mogwser-tabs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+/* Individual tab */
+.mogwser-tab {
+  display: flex;
+  align-items: center;
+  height: var(--mogwser-tab-height);
+  padding: 0 8px;
+  border-radius: var(--mogwser-radius);
+  cursor: pointer;
+  gap: 8px;
+  user-select: none;
+}
+
+.mogwser-tab:hover {
+  background: var(--mogwser-bg-tertiary);
+}
+
+.mogwser-tab.mogwser-tab-active {
+  background: var(--mogwser-bg-tertiary);
+  border-left: 2px solid var(--mogwser-accent);
+}
+
+.mogwser-tab.mogwser-tab-dragging {
+  opacity: 0.5;
+}
+
+.mogwser-tab-favicon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.mogwser-tab-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.mogwser-tab-muted-indicator {
+  font-size: 10px;
+  color: var(--mogwser-text-muted);
+}
+
+.mogwser-tab-close {
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--mogwser-text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.mogwser-tab:hover .mogwser-tab-close {
+  display: flex;
+}
+
+.mogwser-tab-close:hover {
+  background: var(--mogwser-danger);
+  color: white;
+}
+
+/* Pinned tab */
+.mogwser-tab-pinned {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--mogwser-radius);
+}
+
+.mogwser-tab-pinned .mogwser-tab-title,
+.mogwser-tab-pinned .mogwser-tab-close {
+  display: none;
+}
+
+.mogwser-new-tab-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: var(--mogwser-radius);
+  background: transparent;
+  color: var(--mogwser-text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: left;
+}
+
+.mogwser-new-tab-btn:hover {
+  background: var(--mogwser-bg-tertiary);
+  color: var(--mogwser-text-primary);
+}
+
+/* ===== Content Area ===== */
+.mogwser-content-area {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.mogwser-split-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.mogwser-content-pane {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.mogwser-split-divider {
+  width: 4px;
+  background: var(--mogwser-border);
+  cursor: col-resize;
+  flex-shrink: 0;
+}
+
+.mogwser-split-divider:hover {
+  background: var(--mogwser-accent);
+}
+
+/* ===== Side Panel ===== */
+.mogwser-side-panel {
+  width: var(--mogwser-side-panel-width);
+  background: var(--mogwser-bg-secondary);
+  border-left: 1px solid var(--mogwser-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.mogwser-side-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--mogwser-border);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mogwser-side-panel-close {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--mogwser-text-muted);
+  cursor: pointer;
+}
+
+.mogwser-side-panel-close:hover {
+  background: var(--mogwser-danger);
+  color: white;
+}
+
+/* ===== Compact Mode Overrides ===== */
+.mogwser-mode-compact .mogwser-toolbar {
+  height: 32px;
+}
+
+.mogwser-mode-compact .mogwser-sidebar {
+  width: var(--mogwser-sidebar-collapsed-width);
+}
+
+.mogwser-mode-compact .mogwser-tab-title,
+.mogwser-mode-compact .mogwser-workspace-list {
+  display: none;
+}
+
+/* ===== Expanded Mode ===== */
+.mogwser-mode-expanded .mogwser-toolbar {
+  height: 48px;
+}
+
+.mogwser-mode-expanded .mogwser-sidebar {
+  width: 300px;
+}
+
+/* ===== Theme Engine: CSS custom properties ===== */
+.mogwser-theme-light {
+  --mogwser-bg-primary: #f5f5f5;
+  --mogwser-bg-secondary: #ffffff;
+  --mogwser-bg-tertiary: #e8e8e8;
+  --mogwser-text-primary: #1a1a2e;
+  --mogwser-text-secondary: #4a4a5a;
+  --mogwser-text-muted: #8888aa;
+  --mogwser-accent: #4a6cf7;
+  --mogwser-border: #d0d0e0;
+}
+
+/* ===== Privacy Shield Indicator ===== */
+.mogwser-privacy-active {
+  position: relative;
+}
+
+.mogwser-privacy-active::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mogwser-success);
+}
+
+/* ===== Scrollbar styling ===== */
+.mogwser-tabstrip::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mogwser-tabstrip::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mogwser-tabstrip::-webkit-scrollbar-thumb {
+  background: var(--mogwser-border);
+  border-radius: 2px;
+}

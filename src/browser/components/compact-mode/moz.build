@@ -1,0 +1,4 @@
+# Mogwser Compact Mode component
+EXTRA_JS_MODULES.mogwser += [
+    'CompactMode.js',
+]

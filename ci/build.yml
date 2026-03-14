@@ -1,0 +1,75 @@
+# Mogwser Browser CI Pipeline
+# Builds and tests on Linux, macOS, and Windows
+
+name: Mogwser CI
+
+on:
+  push:
+    branches: [main, "release/*"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm run lint
+      - run: npm test
+
+  build-linux:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip mercurial
+      - name: Setup Firefox source
+        run: npm run setup
+      - name: Build Mogwser
+        run: npm run build -- --platform=linux
+      - name: Run tests
+        run: npm test
+
+  build-macos:
+    needs: lint
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install build dependencies
+        run: brew install mercurial python@3
+      - name: Setup Firefox source
+        run: npm run setup
+      - name: Build Mogwser
+        run: npm run build -- --platform=macos
+      - name: Run tests
+        run: npm test
+
+  build-windows:
+    needs: lint
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install MozillaBuild
+        run: |
+          choco install mozilla-build -y
+      - name: Setup Firefox source
+        run: npm run setup
+      - name: Build Mogwser
+        run: npm run build -- --platform=windows
+      - name: Run tests
+        run: npm test

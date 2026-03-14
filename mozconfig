@@ -1,0 +1,37 @@
+# Mogwser Browser - Mozilla Build Configuration
+# This mozconfig is used when building Mogwser from the Firefox source tree.
+
+# Build optimized release by default
+ac_add_options --enable-optimize
+ac_add_options --disable-debug
+
+# Branding
+ac_add_options --with-branding=browser/branding/mogwser
+ac_add_options --with-app-name=mogwser
+ac_add_options --with-app-basename=Mogwser
+
+# Enable features required by Mogwser
+ac_add_options --enable-default-browser-agent
+
+# Use system libraries where available (Linux)
+if test "$(uname)" = "Linux"; then
+  ac_add_options --with-system-zlib
+  ac_add_options --with-system-libevent
+fi
+
+# macOS-specific
+if test "$(uname)" = "Darwin"; then
+  ac_add_options --enable-macos-target=10.15
+fi
+
+# Windows-specific (detected via MOZILLABUILD env)
+if test -n "$MOZILLABUILD"; then
+  ac_add_options --enable-jemalloc
+fi
+
+# Object directory
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj-mogwser
+
+# Mogwser-specific defines
+export MOZ_MOGWSER=1
+export MOGWSER_VERSION="1.0.0"

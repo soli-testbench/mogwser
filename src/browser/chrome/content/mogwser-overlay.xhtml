@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mogwser Browser Chrome - Main UI Shell Overlay
+     This replaces the default Firefox chrome with Mogwser's custom shell.
+     Original implementation - not derived from Zen Browser source. -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is" >
+<head>
+  <title>Mogwser</title>
+  <link rel="stylesheet" href="chrome://mogwser/content/mogwser.css" />
+</head>
+<body id="mogwser-browser-chrome">
+
+  <!-- Top Bar: Compact navigation and toolbar -->
+  <div id="mogwser-toolbar" class="mogwser-toolbar mogwser-compact">
+    <div id="mogwser-nav-controls" class="mogwser-nav-controls">
+      <button id="mogwser-back" class="mogwser-nav-btn" title="Back" />
+      <button id="mogwser-forward" class="mogwser-nav-btn" title="Forward" />
+      <button id="mogwser-reload" class="mogwser-nav-btn" title="Reload" />
+    </div>
+    <div id="mogwser-urlbar-container" class="mogwser-urlbar-container">
+      <input id="mogwser-urlbar" type="text" class="mogwser-urlbar"
+             placeholder="Search or enter address" />
+    </div>
+    <div id="mogwser-toolbar-actions" class="mogwser-toolbar-actions">
+      <button id="mogwser-compact-toggle" class="mogwser-action-btn"
+              title="Toggle compact mode" />
+      <button id="mogwser-privacy-shield" class="mogwser-action-btn"
+              title="Privacy &amp; Security" />
+      <button id="mogwser-theme-picker" class="mogwser-action-btn"
+              title="Theme settings" />
+      <button id="mogwser-menu" class="mogwser-action-btn" title="Menu" />
+    </div>
+  </div>
+
+  <!-- Main content area with sidebar -->
+  <div id="mogwser-main" class="mogwser-main">
+
+    <!-- Left Sidebar: Vertical Tabs + Workspaces -->
+    <div id="mogwser-sidebar" class="mogwser-sidebar mogwser-sidebar-expanded">
+
+      <!-- Workspace switcher -->
+      <div id="mogwser-workspace-bar" class="mogwser-workspace-bar">
+        <div id="mogwser-workspace-list" class="mogwser-workspace-list" />
+        <button id="mogwser-workspace-add" class="mogwser-workspace-add-btn"
+                title="New workspace">+</button>
+      </div>
+
+      <!-- Vertical tab bar -->
+      <div id="mogwser-tabstrip" class="mogwser-tabstrip">
+        <div id="mogwser-pinned-tabs" class="mogwser-pinned-tabs" />
+        <div id="mogwser-tabs-list" class="mogwser-tabs-list" />
+        <button id="mogwser-new-tab" class="mogwser-new-tab-btn"
+                title="New tab">+ New Tab</button>
+      </div>
+    </div>
+
+    <!-- Content area (split-view capable) -->
+    <div id="mogwser-content-area" class="mogwser-content-area">
+      <div id="mogwser-split-container" class="mogwser-split-container">
+        <div id="mogwser-content-primary" class="mogwser-content-pane mogwser-pane-active">
+          <xul:browser id="mogwser-browser-primary" type="content"
+                       flex="1" />
+        </div>
+        <!-- Secondary pane for split-view (hidden by default) -->
+        <div id="mogwser-split-divider" class="mogwser-split-divider"
+             hidden="true" />
+        <div id="mogwser-content-secondary" class="mogwser-content-pane"
+             hidden="true">
+          <xul:browser id="mogwser-browser-secondary" type="content"
+                       flex="1" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar: Web Side-Panel -->
+    <div id="mogwser-side-panel" class="mogwser-side-panel" hidden="true">
+      <div id="mogwser-side-panel-header" class="mogwser-side-panel-header">
+        <span id="mogwser-side-panel-title" />
+        <button id="mogwser-side-panel-close" class="mogwser-side-panel-close"
+                title="Close panel">x</button>
+      </div>
+      <xul:browser id="mogwser-side-panel-browser" type="content" flex="1" />
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="chrome://mogwser/content/mogwser.js" />
+</body>
+</html>
