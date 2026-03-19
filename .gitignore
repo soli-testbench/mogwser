@@ -1,0 +1,6 @@
+mozilla-unified/
+obj-mogwser/
+*.tar.xz
+tests/bats-core/
+.mozconfig-*
+*.pyc
